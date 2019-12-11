@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bakery>
+	<pariscro> 
+		<brandName>파리크로와상</brandName> 
+		<info1>프랑스 정통 베이커리 카페</info1>
+		<info2>파리크라상은 매장에서 직접 구운 빵을 비롯해 케이크, 브런치, 커피 등 다양한 메뉴를 &lt;br&gt;
+		선보이며 고품격 라이프 스타일을 제안하는 베이커리 브랜드입니다.</info2>
+		<benefit>
+		모바일카드&lt;br&gt;
+		VIP/골드 이용금액 1,000원당 100원 할인&lt;br&gt;
+		실버 이용금액 1,000원당 50원 할인&lt;br&gt;
+		 1천원 + 반반 T콤보 5천원 이용권 지급 (일 최대 5매)	&lt;br&gt;	
+		</benefit>
+		<note>
+		- 1일 1회 사용가능&lt;br&gt;
+		- 최소 구매금액 1천원 이상 시 할인 가능&lt;br&gt;
+		- 결제 전 직원에게 T 멤버십 카드 제시&lt;br&gt;
+		- 타 할인 및 쿠폰과 동시에 사용 불가&lt;br&gt;
+		- 제외 매장: 일부 점포(휴게소, 역사, 인샵, 특수매장 등) 제외 됩니다.
+		</note>
+		<tel>
+		TEL : 080-731-2027&lt;br&gt;
+		HOME : www.pariscroissant.co.kr/&lt;br&gt;
+		</tel>
+		<image>
+		pariscro.png
+		</image>
+	</pariscro>
+	
+	<parisbage> 
+		<brandName>파리바게트</brandName> 
+		<info1>대한민국 베이커리 문화를 선도하는 건강한 베이커리</info1>
+		<info2>파리바게뜨는 프리미엄 베이커리 브랜드로 언제나 갓 구운 신선한 빵을 제공하며 &lt;br&gt;
+		고급스럽고 차별화된 제품으로 고객에게 많은 사랑을 받는 브랜드입니다.</info2>
+		<benefit>
+		모바일카드
+		VIP/골드 이용금액 1,000원당 100원 할인&lt;br&gt;
+		실버 이용금액 1,000원당 50원 할인
+		</benefit>
+		<note>
+		- 1일 1회, 최대 이용금액 20만원 내에서 할인 가능&lt;br&gt;
+		- 최소 구매금액 1천원 이상 시 할인 가능&lt;br&gt;
+		- 결제 전 직원에게 T멤버십 카드 제시&lt;br&gt;
+		- 타 할인 및 쿠폰과 동시에 사용 불가&lt;br&gt;
+		- 제외 매장: 파리바게뜨 홈페이지 참조&lt;br&gt;
+		</note>
+		<tel>
+		TEL : 080-731-2027&lt;br&gt;
+		HOME : www.paris.co.kr/main/
+		</tel>
+		<image>
+		parisbage.png
+		</image>
+	</parisbage>
+	
+		
+	<toure> 
+		<brandName>뚜레쥬르</brandName> 
+		<info1>재료부터 다른 건강한 베이커리</info1>
+		<info2>빵마다 고유의 맛을 살려주는 맞춤 밀가루, &lt;br&gt;
+		빵 반죽 속 1% 소금까지도 신안 천일염을 사용하는 재료부터 다른 건강한 베이커리 입니다.</info2>
+		<benefit>
+		모바일카드&lt;br&gt;
+		VIP/골드 이용금액 1,000원당 100원 할인&lt;br&gt;
+		실버 이용금액 1,000원당 50원 할인
+		</benefit>
+		<note>
+		- 1일 1회, 이용금액 최대 20만원 내에서 할인적용(최소 구매금액 1천원)&lt;br&gt;
+		- 타 쿠폰 및 할인 프로그램과의 중복적용 불가&lt;br&gt;
+		- 뚜레쥬르 온라인쇼핑몰 적용 제외&lt;br&gt;
+		- 일부 특수점포 (인천공항, 마트, 병원, 휴게소 등)의 경우 혜택제공 불가&lt;br&gt;
+		</note>
+		<tel>
+		TEL : 1577-0700&lt;br&gt;
+		HOME : www.tlj.co.kr
+		</tel>
+		<image>
+		toure.png
+		</image>
+	</toure>
+
+</bakery>
+
