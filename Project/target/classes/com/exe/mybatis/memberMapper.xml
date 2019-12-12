@@ -30,7 +30,7 @@
 	</delete>
 	
 	<update id="updateMem" parameterType="com.exe.dto.MemberDTO">
-		update users set pw=#{pw},email=#{email},name=#{name},birth=#{birth} where phone=#{phone}
+		update users set pw=#{pw},email=#{email},name=#{name},birth=#{birth},salt=#{salt} where phone=#{phone}
 	</update>
 	
 	<select id="phoneCheck" resultType="int" parameterType="String">
@@ -49,4 +49,7 @@
 		select phone,pw,name,birth,email,TmemberGrade,point,admin from users
 	</select>
 	
+	<select id="findForPw" resultType="com.exe.dto.MemberDTO" parameterType="map">
+		select phone,pw,email,name,birth from users where phone=#{phone}
+	</select>
 </mapper>

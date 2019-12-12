@@ -53,14 +53,24 @@ public class packageDAO {
 			totalData*=Double.parseDouble(Data);
 		}
 		map.put("totalData", totalData);
-
+		
 		//월정액
 		Map<String,Integer> fSer = sessionTemplate.selectOne("packmapper.getProNum", map);
+		//아예 가입한 상품이 없을 때 무조건 0으로 값 지정
+		//나중에 회원 가입하면 자동을 생성하는 것도 좋을 듯
+		if(fSer==null) {
+			fSer = new HashMap<String, Integer>();
+			fSer.put("FLO", 0);
+			fSer.put("WAVVE", 0);
+			fSer.put("FIND", 0);
+		}
 		
 		int price = sessionTemplate.selectOne("packmapper.getPrice",fSer);
+		
 		map.put("price", price);
 		
 		sessionTemplate.insert("packmapper.insertData",map);
+		
 	}
 	
 	public PackageDTO info(String phone,String ym) {

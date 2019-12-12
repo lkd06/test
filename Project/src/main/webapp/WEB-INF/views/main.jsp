@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="/project/resources/css/flaticon.css">
     <link rel="stylesheet" href="/project/resources/css/icomoon.css">
     <link rel="stylesheet" href="/project/resources/css/style.css">
-    
+    <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
     <script type="text/javascript">
     	function login(){
     		var f = document.mem;
@@ -44,6 +44,14 @@
     		f.action="logout.action";
     		f.submit();
     	}
+    	
+    	 $(document).ready(function(){
+    		 $("#findPW").click(function(){
+				var url ="findPw";
+				var option= "width = 500, height = 500, top = 100, left = 200, location = no"
+				window.open(url, name, option);
+    		 });
+    	 });
     </script>
     
   </head>
@@ -92,7 +100,8 @@
 			        </div>
 			        
 			         <div class="form-group">
-			            <a href="signup.action">회원가입</a>
+			            <a href="signup.action">회원가입</a> | 
+			            <a id="findPW">비밀번호 찾기</a>
 			        </div>
 			        
 				<%}else { %>
@@ -229,32 +238,10 @@
     		</c:forEach>
     		</table>
         </center>
-        
-    		<!-- 
-    		<div class="row">
-    			<div class="col-md-3">
-    				<div class="car-wrap ftco-animate">
-    					<div class="img d-flex align-items-end" style="background-image: url(/project/resources/images/car-1.jpg);">
-    						<div class="price-wrap d-flex">
-    							<span class="rate">$25</span>
-    							<p class="from-day">
-    								<span>From</span>
-    								<span>/Day</span>
-    							</p>
-    						</div>
-    					</div>
-    					<div class="text p-4 text-center">
-    						<h2 class="mb-0"><a href="#">Mercedes Grand Sedan</a></h2>
-    						<span>Audi</span>
-    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-black btn-outline-black mr-1">Book now</a> <a href="#" class="btn btn-black btn-outline-black ml-1">Details</a></p>
-    					</div>
-    				</div>
-    			</div>
-    		</div>
-    		 -->
     	</div>
     </section>
 
+		            	
     <section class="ftco-section services-section img" style="background-image: url(/project/resources/images/5G.jpg);">
     	<div class="overlay"></div>
     	<div class="container">
@@ -405,6 +392,8 @@
         </div>
       </div>
     </section>
+    
+    
     
 	<jsp:include page="footer.jsp"/>
  

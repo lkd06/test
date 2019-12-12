@@ -93,7 +93,7 @@ public class MemberDAO {
 		
 		String salt = Cryto.generateSalt();
 		String pw = dto.getPw();
-		
+		System.out.println(pw+"!!!!!!!!!!");
 		dto.setSalt(salt);
 		pw = Cryto.getEncrypt(pw, salt);
 		dto.setPw(pw);
@@ -132,6 +132,13 @@ public class MemberDAO {
 		
 		MemberDTO dto = sessionTemplate.selectOne("membermapper.getReadData",phone);
 		
+		return dto;
+	}
+	
+	public MemberDTO findForPw(String phone) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("phone",phone);
+		MemberDTO dto = sessionTemplate.selectOne("membermapper.findForPw", phone);
 		return dto;
 	}
 }

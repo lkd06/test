@@ -1,24 +1,35 @@
 package com.exe.project;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.exe.dao.MemberDAO;
 import com.exe.dao.packageDAO;
 import com.exe.dto.MemberDTO;
+import com.exe.util.Cryto;
 
 @Controller
 public class memberController {
@@ -30,6 +41,9 @@ public class memberController {
 	@Autowired
 	@Qualifier("packDAO")
 	packageDAO packDAO;
+	
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	@RequestMapping(value = "/login.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String login(MemberDTO dto,HttpServletRequest request) {
@@ -43,6 +57,7 @@ public class memberController {
 			session.setAttribute("message","Pw 미입력");
 		}else { //입력시 확인
 			//나중에 phone,pw 구분해서 할까하는중
+			
 			dto = dao.login(dto);
 			  
 			if(dto==null) {
@@ -82,6 +97,7 @@ public class memberController {
 	@RequestMapping(value = "/signup.action", method = RequestMethod.POST)
 	public String joinUser(MemberDTO dto) {
 		dao.insertData(dto);
+		
 		return "redirect:/#";
 	}
 	
@@ -179,4 +195,59 @@ public class memberController {
 		}
 		return "login/pwmess";
 	}
+	
+	@RequestMapping(value = "/findPw", method = { RequestMethod.POST, RequestMethod.GET})
+	public String findPwView() {
+		return "login/findpw";
+	}
+	
+	@RequestMapping(value = "/findInfo", method = RequestMethod.POST)
+	@ResponseBody
+	public List<String> checkInfo(HttpServletRequest request) {
+		String phone = request.getParameter("phone");
+		String email = request.getParameter("email");
+		MemberDTO dto = dao.findForPw(phone);
+		
+		List<String> lists = new ArrayList<String>();
+		if(dto==null) {
+			lists.add("가입하지 않은 번호입니다.");
+		}else if(!dto.getEmail().equals(email)) {
+			lists.add("잘못된 이메일 입니다.");
+		}else {
+			//phone, email 일치
+			//비밀번호 재생성 및 메일 보내기
+			Random r_num = new Random();
+			String newPw="";
+			for(int i=0;i<6;i++) {
+				newPw+=Integer.toString(r_num.nextInt(9));
+			}
+			System.out.println(newPw);
+			//PW 변경은 나중에
+			//일단 메일 전송부터
+			String senderEmail="lkd9361@naver.com";
+			String receiverEmail=email;
+			String title="비밀번호 변경 신청(포트폴리오)";
+			String content=newPw;
+			
+			try {
+				MimeMessage message = mailSender.createMimeMessage();
+				MimeMessageHelper messageHelper = new MimeMessageHelper(message,"UTF-8");
+				messageHelper.setFrom(senderEmail);
+				messageHelper.setTo(receiverEmail);
+				messageHelper.setSubject(title);
+				messageHelper.setText(content);
+				mailSender.send(message);
+				//PW 변경 실시
+				//salt는 일단 전에 있던거 그대로 사용
+				dto.setPw(newPw);
+				dao.update(dto);
+			} catch (Exception e) {
+				System.out.println(e);
+				lists.add("변경실패");
+			}
+		}
+		return lists;
+	}
+	
+	
 }
